@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" text="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" text="ie=edge">
+    <title>tweet-generator-microservice</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+      @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+      * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        box-sizing: border-box;
+        font-family: 'Lato', sans-serif;
+      }
+      a {
+        color: #1b799e;
+        text-decoration: none;
+      }
+      p {
+        padding: 5px;
+      }
+
+      header {
+        text-align: center;
+        padding: 20px;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .tweet-example {
+        text-align: center;
+        padding: 40px;
+        border: 2px dashed #e8e8e8;
+        margin-top: -1px;
+        margin-left: -1px;
+      }
+      .tweet-example pre {
+        text-align: left;
+        width: fit-text;
+        margin: 0 auto;
+        padding: 15px;
+        border: 1px solid #e4e4e4;
+        border-radius: 8px;
+        font-family: 'Roboto Mono', monospace;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+      .tweet-example img {
+        padding: 15px;
+        margin: 15px;
+        width: 75%;
+        border: 1px solid #e4e4e4;
+        border-radius: 8px;
+        background: transparent url(https://loading.io/spinners/rolling/lg.curve-bars-loading-indicator.gif) no-repeat scroll center center;
+        background-size: 50px;
+        min-height: 50px;
+      }
+      .tweet-example h2 {
+        margin: 5px;
+      }
+      .tweet-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 75%;
+        margin: 0 auto;
+      }
+      @media all and (max-width: 800px) {
+        main {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        .tweet-example pre {
+          font-size: 10px;
+          margin: 0;
+        }
+        .tweet-example img {
+          padding: 0;
+          margin: 0;
+          width: 100%;
+        }
+        .tweet-links {
+          width: 100%;
+        }
+      }
+
+      .github {
+        text-align: center;
+        margin: 30px 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>tweet-generator-microservice</h1>
+      <p>
+        The tweet webpage generation endpoint is located at <a href="/tweet">/tweet</a>.<br>
+        The tweet image generation endpoint is located at <a href="/screenshot">/screenshot</a>.
+      </p>
+    </header>
+
+    <main>
+      <div class="tweet-example">
+        <h1>Simple tweet</h1>
+
+        <h2>Result</h2>
+        <img src="/screenshot?tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22blue%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/700%22%20}%20]%20}" />
+        <div class="tweet-links">
+          <a href="/tweet?tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22blue%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/700%22%20}%20]%20}">Tweet webpage</a>
+          <a href="/screenshot?tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22blue%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/700%22%20}%20]%20}">Tweet image</a>
+        </div>
+
+        <h2>Tweet data</h2>
+        <pre>{
+          "name": "My cool name 🎉",
+          "username": "my_username",
+          "text": "My awesome #tweet text 💖",
+          "verified_type": "blue",
+          "date": "2023-04-19T19:48:22.531Z",
+          "retweets": 54371,
+          "likes": 54371,
+          "quotes": 1,
+          "replies": 543,
+          "profileImage": "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
+          "attachments": [
+              {
+                  "type": "image",
+                  "url": "https://picsum.photos/700"
+              }
+          ]
+      }</pre>
+      </div>
+
+      <div class="tweet-example">
+        <h1>Simple tweet without stats</h1>
+
+        <h2>Result</h2>
+        <img src="/screenshot?style=no-stats&tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/700%22%20}%20]%20}" />
+        <div class="tweet-links">
+          <a href="/tweet?style=no-stats&tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/700%22%20}%20]%20}">Tweet webpage</a>
+          <a href="/screenshot?style=no-stats&tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/700%22%20}%20]%20}">Tweet image</a>
+        </div>
+
+        <h2>Tweet data</h2>
+        <pre>{
+          "name": "My cool name 🎉",
+          "username": "my_username",
+          "text": "My awesome #tweet text 💖",
+          "verified_type": "business",
+          "date": "2023-04-19T19:48:22.531Z",
+          "retweets": 54371,
+          "likes": 54371,
+          "quotes": 1,
+          "replies": 543,
+          "profileImage": "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
+          "attachments": [
+              {
+                  "type": "image",
+                  "url": "https://picsum.photos/700"
+              }
+          ]
+      }</pre>
+      </div>
+
+      <div class="tweet-example">
+        <h1>Quoted tweet</h1>
+
+        <h2>Result</h2>
+        <img src="/screenshot?tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22government%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/800%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/600%22%20},%20{%20%22type%22:%20%22video%22,%20%22url%22:%20%22https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/500%22%20}%20],%20%22quoted%22:%20{%20%22name%22:%20%22Quoted%20name%20🤷%E2%80%8D♂%EF%B8%8F%22,%20%22username%22:%20%22quoted_username%22,%20%22text%22:%20%22quoted%20tweet%20text%20😌%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T18:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/300%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/200%22%20}%20]%20}%20}" />
+        <div class="tweet-links">
+          <a href="/tweet?tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22government%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/800%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/600%22%20},%20{%20%22type%22:%20%22video%22,%20%22url%22:%20%22https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/500%22%20}%20],%20%22quoted%22:%20{%20%22name%22:%20%22Quoted%20name%20🤷%E2%80%8D♂%EF%B8%8F%22,%20%22username%22:%20%22quoted_username%22,%20%22text%22:%20%22quoted%20tweet%20text%20😌%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T18:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/300%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/200%22%20}%20]%20}%20}">Tweet webpage</a>
+          <a href="/screenshot?tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22government%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/800%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/600%22%20},%20{%20%22type%22:%20%22video%22,%20%22url%22:%20%22https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/500%22%20}%20],%20%22quoted%22:%20{%20%22name%22:%20%22Quoted%20name%20🤷%E2%80%8D♂%EF%B8%8F%22,%20%22username%22:%20%22quoted_username%22,%20%22text%22:%20%22quoted%20tweet%20text%20😌%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T18:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/300%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/200%22%20}%20]%20}%20}">Tweet image</a>
+        </div>
+
+        <h2>Tweet data</h2>
+        <pre>{
+          "name": "My cool name 🎉",
+          "username": "my_username",
+          "text": "My awesome #tweet text 💖",
+          "verified_type": "government",
+          "date": "2023-04-19T19:48:22.531Z",
+          "retweets": 54371,
+          "likes": 54371,
+          "quotes": 1,
+          "replies": 543,
+          "profileImage": "https://picsum.photos/96",
+          "attachments": [
+              {
+                  "type": "image",
+                  "url": "https://picsum.photos/800"
+              },
+              {
+                  "type": "image",
+                  "url": "https://picsum.photos/600"
+              },
+              {
+                  "type": "video",
+                  "url": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4"
+              },
+              {
+                  "type": "image",
+                  "url": "https://picsum.photos/500"
+              }
+          ],
+          "quoted": {
+              "name": "Quoted name 🤷‍♂️",
+              "username": "quoted_username",
+              "text": "quoted tweet text 😌",
+              "verified_type": "business",
+              "date": "2023-04-19T18:48:22.531Z",
+              "retweets": 54371,
+              "likes": 54371,
+              "quotes": 1,
+              "replies": 543,
+              "profileImage": "https://picsum.photos/96",
+              "attachments": [
+                  {
+                      "type": "image",
+                      "url": "https://picsum.photos/300"
+                  },
+                  {
+                      "type": "image",
+                      "url": "https://picsum.photos/200"
+                  }
+              ]
+          }
+      }</pre>
+      </div>
+
+      <div class="tweet-example">
+        <h1>Quoted tweet without stats</h1>
+
+        <h2>Result</h2>
+        <img src="/screenshot?style=no-stats&tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22government%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/800%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/600%22%20},%20{%20%22type%22:%20%22video%22,%20%22url%22:%20%22https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/500%22%20}%20],%20%22quoted%22:%20{%20%22name%22:%20%22Quoted%20name%20🤷%E2%80%8D♂%EF%B8%8F%22,%20%22username%22:%20%22quoted_username%22,%20%22text%22:%20%22quoted%20tweet%20text%20😌%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T18:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/300%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/200%22%20}%20]%20}%20}" />
+        <div class="tweet-links">
+          <a href="/tweet?style=no-stats&tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22government%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/800%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/600%22%20},%20{%20%22type%22:%20%22video%22,%20%22url%22:%20%22https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/500%22%20}%20],%20%22quoted%22:%20{%20%22name%22:%20%22Quoted%20name%20🤷%E2%80%8D♂%EF%B8%8F%22,%20%22username%22:%20%22quoted_username%22,%20%22text%22:%20%22quoted%20tweet%20text%20😌%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T18:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/300%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/200%22%20}%20]%20}%20}">Tweet webpage</a>
+          <a href="/screenshot?style=no-stats&tweetData={%20%22name%22:%20%22My%20cool%20name%20🎉%22,%20%22username%22:%20%22my_username%22,%20%22text%22:%20%22My%20awesome%20%23tweet%20text%20💖%22,%20%22verified_type%22:%20%22government%22,%20%22date%22:%20%222023-04-19T19:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/800%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/600%22%20},%20{%20%22type%22:%20%22video%22,%20%22url%22:%20%22https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/500%22%20}%20],%20%22quoted%22:%20{%20%22name%22:%20%22Quoted%20name%20🤷%E2%80%8D♂%EF%B8%8F%22,%20%22username%22:%20%22quoted_username%22,%20%22text%22:%20%22quoted%20tweet%20text%20😌%22,%20%22verified_type%22:%20%22business%22,%20%22date%22:%20%222023-04-19T18:48:22.531Z%22,%20%22retweets%22:%2054371,%20%22likes%22:%2054371,%20%22quotes%22:%201,%20%22replies%22:%20543,%20%22profileImage%22:%20%22https://picsum.photos/96%22,%20%22attachments%22:%20[%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/300%22%20},%20{%20%22type%22:%20%22image%22,%20%22url%22:%20%22https://picsum.photos/200%22%20}%20]%20}%20}">Tweet image</a>
+        </div>
+
+        <h2>Tweet data</h2>
+        <pre>{
+          "name": "My cool name 🎉",
+          "username": "my_username",
+          "text": "My awesome #tweet text 💖",
+          "verified_type": "government",
+          "date": "2023-04-19T19:48:22.531Z",
+          "retweets": 54371,
+          "likes": 54371,
+          "quotes": 1,
+          "replies": 543,
+          "profileImage": "https://picsum.photos/96",
+          "attachments": [
+              {
+                  "type": "image",
+                  "url": "https://picsum.photos/800"
+              },
+              {
+                  "type": "image",
+                  "url": "https://picsum.photos/600"
+              },
+              {
+                  "type": "video",
+                  "url": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4"
+              },
+              {
+                  "type": "image",
+                  "url": "https://picsum.photos/500"
+              }
+          ],
+          "quoted": {
+              "name": "Quoted name 🤷‍♂️",
+              "username": "quoted_username",
+              "text": "quoted tweet text 😌",
+              "verified_type": "business",
+              "date": "2023-04-19T18:48:22.531Z",
+              "retweets": 54371,
+              "likes": 54371,
+              "quotes": 1,
+              "replies": 543,
+              "profileImage": "https://picsum.photos/96",
+              "attachments": [
+                  {
+                      "type": "image",
+                      "url": "https://picsum.photos/300"
+                  },
+                  {
+                      "type": "image",
+                      "url": "https://picsum.photos/200"
+                  }
+              ]
+          }
+      }</pre>
+      </div>
+    </main>
+
+    <div class="github">
+      <a href="https://github.com/rklf/tweet-generator-microservice" target="_blank" rel="noopener">Available on GitHub</a>
+    </div>
+  </body>
+</html>

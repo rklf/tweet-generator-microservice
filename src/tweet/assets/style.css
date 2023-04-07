@@ -1,0 +1,286 @@
+@font-face {
+    font-family: TwitterChirp;
+    src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Light.3a18e64a.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Light.7a5673aa.woff) format('woff');
+    font-weight: 300;
+    font-style: 'normal';
+    font-display: 'swap';
+}
+
+@font-face {
+    font-family: TwitterChirp;
+    src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Regular.80fda27a.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Regular.60b215ba.woff) format('woff');
+    font-weight: 400;
+    font-style: 'normal';
+    font-display: 'swap';
+}
+
+@font-face {
+    font-family: TwitterChirp;
+    src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Medium.f8e2739a.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Medium.20fc288a.woff) format('woff');
+    font-weight: 500;
+    font-style: 'normal';
+    font-display: 'swap';
+}
+
+@font-face {
+    font-family: TwitterChirp;
+    src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Bold.ebb56aba.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Bold.a573679a.woff) format('woff');
+    font-weight: 700;
+    font-style: 'normal';
+    font-display: 'swap';
+}
+
+@font-face {
+    font-family: TwitterChirp;
+    src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Heavy.f44ae4ea.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Heavy.d70ec7ca.woff) format('woff');
+    font-weight: 800;
+    font-style: 'normal';
+    font-display: 'swap';
+}
+
+@font-face {
+    font-family: TwitterChirpExtendedHeavy;
+    src: url(https://abs.twimg.com/fonts/v1/chirp-extended-heavy-web.woff2) format('woff2'), url(https://abs.twimg.com/fonts/v1/chirp-extended-heavy-web.woff) format('woff');
+    font-weight: 800;
+    font-style: 'normal';
+    font-display: 'swap';
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    margin: 0;
+    min-height: 100vh;
+    font-family: TwitterChirp, -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: rgb(15, 20, 25);
+}
+
+.container {
+    width: 50%;
+}
+
+.tweet {
+    border: 1px solid #e1e8ed;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    padding: 8px 16px 0 16px;
+}
+
+.quoted-tweet {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e1e8ed;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.quoted-tweet .profileImage img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.profileImage img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.quoted-tweet .header {
+    margin-bottom: 4px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.quoted-tweet .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.quoted-tweet .info-name {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.info > .info-name {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.name {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.username {
+    font-size: 15px;
+    color: rgb(83, 100, 113);
+}
+
+.quoted-tweet .verified {
+    fill: rgb(29, 155, 240);
+    height: 18px;
+    width: 18px;
+}
+
+.verified {
+    fill: rgb(29, 155, 240);
+    height: 18px;
+    width: 18px;
+}
+
+.quoted-tweet .text {
+    padding: 12px 12px 0px 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.text {
+    padding: 12px 12px 0 12px;
+    width: 100%;
+}
+
+.quoted-tweet .message {
+    font-size: 15px;
+}
+
+.quoted-tweet .message > p:first-child {
+    margin-top: 0;
+}
+
+.message {
+    font-size: 17px;
+}
+
+.message > p:last-child {
+    margin-bottom: 16px;
+}
+
+a.link {
+    color: rgb(29, 155, 240);
+    text-decoration: none;
+}
+a.link:hover {
+    text-decoration: underline;
+}
+
+.quoted-tweet .attachments {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: none;
+    border-radius: 0px;
+    overflow: hidden;
+    height: 319px;
+    margin-top: 0px;
+}
+
+.attachments {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid rgb(207, 217, 222);
+    border-radius: 16px;
+    overflow: hidden;
+    height: 319px;
+    margin-top: 12px;
+}
+
+.attachment {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 50%;
+    flex-shrink: 1;
+}
+
+.attachment>img {
+    height: 0;
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.attachment>video {
+    height: 0;
+    width: 100%;
+    min-height: 100%;
+    object-fit: contain;
+    background-color: black;
+}
+
+.datetime {
+    font-size: 15px;
+    margin: 16px 0;
+    color: rgb(83, 100, 113);
+}
+
+.stats {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid rgb(239, 243, 244);
+}
+
+.hidden {
+    display: none;
+}
+
+.stat-number {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: rgb(83, 100, 113);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 16px 0;
+    border-top: 1px solid rgb(239, 243, 244);
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    color: #657786;
+}
+
+.action svg {
+    fill: #657786;
+    height: 22.5px;
+    width: 22.5px;
+}
+
+.emoji {
+    vertical-align: bottom;
+    width: 1.2em;
+}
