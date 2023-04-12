@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import puppeteer, { executablePath } from 'puppeteer';
 
-
 import extractTweetData from './extractTweetData';
 
 export default async (req: Request, res: Response) => {

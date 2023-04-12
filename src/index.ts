@@ -1,16 +1,9 @@
 import express from 'express';
-import twemoji from 'twemoji';
 import extractTweetData from './extractTweetData';
 import screenshot from './screenshot';
 import ejs from 'ejs';
 import path from 'path';
-
-/**
- * Convert a text's emojis to twitter SVG emojis (chrome-aws-lambda does not support emojis)
- * @param text Any text containing unicode emojis
- * @returns Text with emojis replaced
- */
-const emojify = (text: string): string => twemoji.parse(text, { folder: 'svg', ext: '.svg' });
+import {emojify, timeAgo} from './helpers';
 
 const app = express();
 
@@ -20,6 +13,7 @@ const srcPath = path.join(__dirname, '../src');
 app.set('views', srcPath + '/tweet');
 app.set('view engine', 'ejs');
 app.engine('ejs', ejs.renderFile);
+app.locals.timeAgo = timeAgo;
 
 app.use('/tweet/assets', express.static(srcPath + '/tweet/assets'));
 
@@ -29,7 +23,7 @@ app.use('/screenshot', screenshot);
 
 app.get('/tweet', async (req, res) => {
   // Load the tweet data from the url `tweetData` JSON query object
-  const tweetData = await extractTweetData(req, res)
+  const tweetData = await extractTweetData(req, res);
   const tweetDataEmojified = {
     ...tweetData,
     name: emojify(tweetData.name),
@@ -38,7 +32,21 @@ app.get('/tweet', async (req, res) => {
       ...tweetData.quoted,
       name: emojify(tweetData.quoted.name),
       text: emojify(tweetData.quoted.text)
-    } : null
+    } : null,
+    repliedTo: tweetData.repliedTo && tweetData.repliedTo.length ? tweetData.repliedTo.map((reply) => {
+      if (reply.quoted) {
+        reply.quoted = {
+          ...reply.quoted,
+          name: emojify(reply.quoted.name),
+          text: emojify(reply.quoted.text)
+        }
+      }
+      return {
+        ...reply,
+        name: emojify(reply.name),
+        text: emojify(reply.text),
+      }
+    }) : null,
   }
 
   // Check if a custom template was asked

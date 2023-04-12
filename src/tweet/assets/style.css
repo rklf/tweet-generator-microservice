@@ -67,7 +67,73 @@ body {
     border-radius: 12px;
     overflow: hidden;
     display: flex;
-    padding: 8px 16px 0 16px;
+    flex-direction: column;
+    padding: 16px 16px 0 16px;
+}
+
+.replied_to-tweet {
+    display: flex;
+    overflow: hidden;
+}
+
+.replied_to-tweet .left-side {
+    display: flex;
+    flex-direction: column;
+    margin-right: 12px;
+    align-items: center;
+    position: relative;
+}
+
+.replied_to-tweet .left-side .vertical-line {
+    width: 2px;
+    background-color: rgb(207, 217, 222);
+    margin: 4px 0;
+    line-height: 48px;
+    flex: 1;
+}
+
+.replied_to-tweet .header {
+    margin-bottom: 4px;
+}
+
+.replied_to-tweet .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.replied_to-tweet .message p {
+    margin: 0;
+}
+.replied_to-tweet .message p:last-child {
+    margin: 0;
+}
+.replied_to-tweet .quoted-tweet .message p:last-child {
+    margin-bottom: 16px;
+}
+
+.replied_to-tweet .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+}
+
+.replied_to-tweet .actions {
+    max-width: 425px;
+    justify-content: space-between;
+    border: 0;
+}
+
+.replied_to-tweet .actions .action .action-count {
+    font-size: 13px;
+    padding: 0 12px;
+}
+
+.replied_to-tweet .actions .action svg {
+    fill: #657786;
+    height: 18.75px;
+    width: 18.75px;
 }
 
 .quoted-tweet {
@@ -159,7 +225,6 @@ body {
 }
 
 .text {
-    padding: 12px 12px 0 12px;
     width: 100%;
 }
 
@@ -170,12 +235,15 @@ body {
 .quoted-tweet .message > p:first-child {
     margin-top: 0;
 }
+.text:has(.footer) .message p {
+    margin-bottom: 0;
+}
 
 .message {
     font-size: 17px;
 }
 
-.message > p:last-child {
+.message > p:last-child, .text:has(.quoted-tweet):has(.footer) .message p:last-child {
     margin-bottom: 16px;
 }
 
@@ -229,6 +297,12 @@ a.link:hover {
     min-height: 100%;
     object-fit: contain;
     background-color: black;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .datetime {

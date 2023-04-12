@@ -35,15 +35,17 @@ If you have UTF-16 (like recent emojis) text, JSON stringify, URI encode and con
 | name | `string` | ✅ |  |
 | username | `string` | ✅ |  |
 | text | `string` | ✅ |  |
-| verified_type | `string` |  | `null` |
+| verifiedType | `string` |  | `null` |
 | date | `Date` |  | Current date |
-| retweets | `number` |  | `0` |
-| quotes | `number` |  | `0` |
-| likes | `number` |  | `0` |
-| replies | `number` |  | `0` |
+| retweetCount | `number` |  | `0` |
+| quoteCount | `number` |  | `0` |
+| likeCount | `number` |  | `0` |
+| replyCount | `number` |  | `0` |
+| impressionCount | `number` |  | `0` |
 | attachments | `Object[]` - {"type": `string`, "url": `string`} |  | `0` |
 | profileImage | `string` |  | [Default Twitter image](https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png) |
-| quoted | `Object` - all of the above except `quoted` |  | No quote |
+| quoted | `Object` - all of the above (and `repliedTo`) except `quoted` |  | `null` (no quote) |
+| repliedTo | `Object[]` - all of the above except `repliedTo` |  | `null` (no reply to) |
 
 ## Public demo
 ~~You can use the provided demo endpoint or host your own using [Now](https://zeit.co/now). Examples are given at the root of the website.~~
@@ -65,12 +67,12 @@ const setup = async () => {
     "name": "My cool name 🎉",
     "username": "my_username",
     "text": "My awesome #tweet text 💖",
-    "verified_type": "none",
+    "verifiedType": "none",
     "date": "2023-04-19T19:48:22.531Z",
-    "retweets": 54371,
-    "likes": 54371,
-    "quotes": 1,
-    "replies": 543,
+    "retweetCount": 54371,
+    "likeCount": 54371,
+    "quoteCount": 1,
+    "replyCount": 543,
     "profileImage": "https://picsum.photos/96",
     "attachments": [
       {
@@ -94,12 +96,12 @@ const setup = async () => {
       "name": "Quoted name 🤷‍♂️",
       "username": "quoted_username",
       "text": "quoted tweet text 😌",
-      "verified_type": "business",
+      "verifiedType": "business",
       "date": "2023-04-19T18:48:22.531Z",
-      "retweets": 54371,
-      "likes": 54371,
-      "quotes": 1,
-      "replies": 543,
+      "retweetCount": 54371,
+      "likeCount": 54371,
+      "quoteCount": 1,
+      "replyCount": 543,
       "profileImage": "https://picsum.photos/96",
       "attachments": [
         {
